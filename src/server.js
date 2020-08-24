@@ -23,6 +23,11 @@ const messagesAlert = {
         io.emit('alert', alert)
         alert.shown = true
     }
+    hide: (ctx, id) => {
+        const alert = messages[id]
+        if (!alert) return ctx.throw('Cannot find that alert', 404);
+        io.emit('hide', alert)
+    }
 };
 
 io.on('connection', (socket) => {
@@ -31,6 +36,7 @@ io.on('connection', (socket) => {
 
 app.use(_.get('/alerts', messagesAlert.list));
 app.use(_.get('/alerts/show/:id', messagesAlert.show));
+app.use(_.get('/alerts/hide/:id', messagesAlert.hide));
 
 export const listen = (port) => {
     server.listen(port);
