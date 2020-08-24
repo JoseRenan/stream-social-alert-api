@@ -6,6 +6,9 @@
   "author": "José Renan <joserenansl99@gmail.com>",
   "license": "MIT",
   "type": "module",
+  "scripts": {
+      "start": "node index.js"
+  },
   "dependencies": {
     "@koa/cors": "^3.1.0",
     "add": "^2.0.6",
